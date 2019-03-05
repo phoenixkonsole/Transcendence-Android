@@ -11,7 +11,7 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="airwire.org.airwirewallet.ui.settings_rates.RatesFragment"
+        android:name="transcendence.org.transcendencewallet.ui.settings_rates.RatesFragment"
         android:id="@+id/rates_fragment"
         />
 

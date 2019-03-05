@@ -4,27 +4,27 @@ import com.google.common.base.Stopwatch;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import global.utils.Io;
-import org.airwirej.core.BlockChain;
-import org.airwirej.core.CheckpointManager;
-import org.airwirej.core.Peer;
-import org.airwirej.core.PeerGroup;
-import org.airwirej.core.Sha256Hash;
-import org.airwirej.core.StoredBlock;
-import org.airwirej.core.Transaction;
-import org.airwirej.core.TransactionBroadcast;
-import org.airwirej.core.listeners.PeerConnectedEventListener;
-import org.airwirej.core.listeners.PeerDataEventListener;
-import org.airwirej.core.listeners.PeerDisconnectedEventListener;
-import org.airwirej.net.discovery.MultiplexingDiscovery;
-import org.airwirej.net.discovery.PeerDiscovery;
-import org.airwirej.net.discovery.PeerDiscoveryException;
-import org.airwirej.params.MainNetParams;
-import org.airwirej.params.RegTestParams;
-import org.airwirej.params.TestNet3Params;
-import org.airwirej.store.BlockStore;
-import org.airwirej.store.BlockStoreException;
-import org.airwirej.store.LevelDBBlockStore;
-import org.airwirej.store.SPVBlockStore;
+import org.transcendencej.core.BlockChain;
+import org.transcendencej.core.CheckpointManager;
+import org.transcendencej.core.Peer;
+import org.transcendencej.core.PeerGroup;
+import org.transcendencej.core.Sha256Hash;
+import org.transcendencej.core.StoredBlock;
+import org.transcendencej.core.Transaction;
+import org.transcendencej.core.TransactionBroadcast;
+import org.transcendencej.core.listeners.PeerConnectedEventListener;
+import org.transcendencej.core.listeners.PeerDataEventListener;
+import org.transcendencej.core.listeners.PeerDisconnectedEventListener;
+import org.transcendencej.net.discovery.MultiplexingDiscovery;
+import org.transcendencej.net.discovery.PeerDiscovery;
+import org.transcendencej.net.discovery.PeerDiscoveryException;
+import org.transcendencej.params.MainNetParams;
+import org.transcendencej.params.RegTestParams;
+import org.transcendencej.params.TestNet3Params;
+import org.transcendencej.store.BlockStore;
+import org.transcendencej.store.BlockStoreException;
+import org.transcendencej.store.LevelDBBlockStore;
+import org.transcendencej.store.SPVBlockStore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -277,7 +277,7 @@ public class BlockchainManager {
                     peerGroup.addPeerDiscovery(new PeerDiscovery() {
                         @Override
                         public InetSocketAddress[] getPeers(long services, long timeoutValue, TimeUnit timeUnit) throws PeerDiscoveryException {
-                            // No regtest in airwire yet..
+                            // No regtest in transcendence yet..
                             return null; //RegtestUtil.getPeersToConnect(conf.getNetworkParams(),conf.getNode());
                         }
 

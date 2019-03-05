@@ -1,6 +1,6 @@
 package global;
 
-import org.airwirej.core.Sha256Hash;
+import org.transcendencej.core.Sha256Hash;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package wallet.exceptions;
 
-import org.airwirej.core.Coin;
+import org.transcendencej.core.Coin;
 
 /**
  * Created by akshaynexus on 8/9/17.

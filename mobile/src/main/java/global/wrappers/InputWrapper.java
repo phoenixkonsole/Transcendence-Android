@@ -1,8 +1,8 @@
 package global.wrappers;
 
-import org.airwirej.core.NetworkParameters;
-import org.airwirej.core.Sha256Hash;
-import org.airwirej.core.TransactionOutput;
+import org.transcendencej.core.NetworkParameters;
+import org.transcendencej.core.Sha256Hash;
+import org.transcendencej.core.TransactionOutput;
 
 import java.io.Serializable;
 

@@ -25,7 +25,7 @@
             android:layout_below="@+id/tutorialImage"
             android:layout_alignParentStart="true">
 
-            <airwire.org.airwirewallet.utils.CustomFontTextView
+            <transcendence.org.transcendencewallet.utils.CustomFontTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/title_slide1"

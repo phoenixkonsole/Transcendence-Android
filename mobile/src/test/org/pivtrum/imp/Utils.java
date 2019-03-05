@@ -1,12 +1,12 @@
 package org.pivtrum.imp;
 
-import org.airwirej.core.ECKey;
-import org.airwirej.params.TestNet3Params;
+import org.transcendencej.core.ECKey;
+import org.transcendencej.params.TestNet3Params;
 import org.junit.Test;
 import org.spongycastle.math.ec.ECPoint;
 import org.spongycastle.util.encoders.Hex;
 
-import static org.airwirej.core.ECKey.CURVE;
+import static org.transcendencej.core.ECKey.CURVE;
 
 /**
  * Created by akshaynexus on 8/13/17.

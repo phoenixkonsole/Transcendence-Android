@@ -2,30 +2,30 @@ package wallet;
 
 import com.google.common.base.Charsets;
 
-import org.airwirej.core.Address;
-import org.airwirej.core.BlockChain;
-import org.airwirej.core.Coin;
-import org.airwirej.core.InsufficientMoneyException;
-import org.airwirej.core.PeerGroup;
-import org.airwirej.core.Sha256Hash;
-import org.airwirej.core.Transaction;
-import org.airwirej.core.TransactionInput;
-import org.airwirej.core.TransactionOutput;
-import org.airwirej.core.Utils;
-import org.airwirej.core.listeners.TransactionConfidenceEventListener;
-import org.airwirej.crypto.DeterministicKey;
-import org.airwirej.crypto.LinuxSecureRandom;
-import org.airwirej.crypto.MnemonicCode;
-import org.airwirej.crypto.MnemonicException;
-import org.airwirej.wallet.DeterministicKeyChain;
-import org.airwirej.wallet.DeterministicSeed;
-import org.airwirej.wallet.Protos;
-import org.airwirej.wallet.SendRequest;
-import org.airwirej.wallet.UnreadableWalletException;
-import org.airwirej.wallet.Wallet;
-import org.airwirej.wallet.WalletFiles;
-import org.airwirej.wallet.WalletProtobufSerializer;
-import org.airwirej.wallet.listeners.WalletCoinsReceivedEventListener;
+import org.transcendencej.core.Address;
+import org.transcendencej.core.BlockChain;
+import org.transcendencej.core.Coin;
+import org.transcendencej.core.InsufficientMoneyException;
+import org.transcendencej.core.PeerGroup;
+import org.transcendencej.core.Sha256Hash;
+import org.transcendencej.core.Transaction;
+import org.transcendencej.core.TransactionInput;
+import org.transcendencej.core.TransactionOutput;
+import org.transcendencej.core.Utils;
+import org.transcendencej.core.listeners.TransactionConfidenceEventListener;
+import org.transcendencej.crypto.DeterministicKey;
+import org.transcendencej.crypto.LinuxSecureRandom;
+import org.transcendencej.crypto.MnemonicCode;
+import org.transcendencej.crypto.MnemonicException;
+import org.transcendencej.wallet.DeterministicKeyChain;
+import org.transcendencej.wallet.DeterministicSeed;
+import org.transcendencej.wallet.Protos;
+import org.transcendencej.wallet.SendRequest;
+import org.transcendencej.wallet.UnreadableWalletException;
+import org.transcendencej.wallet.Wallet;
+import org.transcendencej.wallet.WalletFiles;
+import org.transcendencej.wallet.WalletProtobufSerializer;
+import org.transcendencej.wallet.listeners.WalletCoinsReceivedEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -189,7 +189,7 @@ public class WalletManager {
         wallet.addCoinsReceivedEventListener(new WalletCoinsReceivedEventListener() {
             @Override
             public void onCoinsReceived(Wallet wallet, Transaction transaction, Coin coin, Coin coin1) {
-                org.airwirej.core.Context.propagate(conf.getWalletContext());
+                org.transcendencej.core.Context.propagate(conf.getWalletContext());
                 saveWallet();
             }
         });

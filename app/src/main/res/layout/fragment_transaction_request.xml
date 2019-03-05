@@ -9,7 +9,7 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="airwire.org.airwirewallet.ui.transaction_send_activity.AmountInputFragment"
+        android:name="transcendence.org.transcendencewallet.ui.transaction_send_activity.AmountInputFragment"
         android:id="@+id/fragment_amount"
         />
 

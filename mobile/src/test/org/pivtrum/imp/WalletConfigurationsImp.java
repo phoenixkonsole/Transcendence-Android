@@ -1,8 +1,8 @@
 package org.pivtrum.imp;
 
-import org.airwirej.core.Context;
-import org.airwirej.core.NetworkParameters;
-import org.airwirej.params.TestNet3Params;
+import org.transcendencej.core.Context;
+import org.transcendencej.core.NetworkParameters;
+import org.transcendencej.params.TestNet3Params;
 
 import global.WalletConfiguration;
 

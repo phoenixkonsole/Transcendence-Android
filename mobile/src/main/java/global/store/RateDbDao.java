@@ -1,6 +1,6 @@
 package global.store;
 
-import global.AirWireRate;
+import global.TranscendenceRate;
 
 /**
  * Created by akshaynexus on 3/3/18.
@@ -8,9 +8,9 @@ import global.AirWireRate;
 
 public interface RateDbDao<T> extends AbstractDbDao<T>{
 
-    AirWireRate getRate(String coin);
+    TranscendenceRate getRate(String coin);
 
 
-    void insertOrUpdateIfExist(AirWireRate airwireRate);
+    void insertOrUpdateIfExist(TranscendenceRate transcendenceRate);
 
 }

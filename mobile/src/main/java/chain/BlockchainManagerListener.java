@@ -1,6 +1,6 @@
 package chain;
 
-import org.airwirej.core.PeerGroup;
+import org.transcendencej.core.PeerGroup;
 
 import java.util.Set;
 

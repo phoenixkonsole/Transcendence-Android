@@ -1,7 +1,7 @@
 package global;
 
-import org.airwirej.core.Context;
-import org.airwirej.core.NetworkParameters;
+import org.transcendencej.core.Context;
+import org.transcendencej.core.NetworkParameters;
 
 /**
  * Created by akshaynexus on 6/4/17.

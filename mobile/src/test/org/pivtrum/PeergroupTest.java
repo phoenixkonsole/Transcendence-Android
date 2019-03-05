@@ -1,9 +1,9 @@
 /*
 package org.pivtrum;
 
-import org.airwirej.core.Address;
-import org.airwirej.core.Coin;
-import org.airwirej.utils.MonetaryFormat;
+import org.transcendencej.core.Address;
+import org.transcendencej.core.Coin;
+import org.transcendencej.utils.MonetaryFormat;
 import org.furszy.client.exceptions.ConnectionFailureException;
 import org.junit.Test;
 import org.pivtrum.imp.AddressStoreImp;

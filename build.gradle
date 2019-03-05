@@ -19,7 +19,7 @@ allprojects {
         maven { url "https://www.jitpack.io" }
         google()
         maven {
-            url  "https://dl.bintray.com/furszy/airwire/"
+            url  "https://dl.bintray.com/furszy/transcendence/"
         }
     }
     

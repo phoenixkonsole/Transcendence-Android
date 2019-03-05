@@ -1,8 +1,8 @@
 package global.wrappers;
 
-import org.airwirej.core.Coin;
-import org.airwirej.core.Sha256Hash;
-import org.airwirej.core.Transaction;
+import org.transcendencej.core.Coin;
+import org.transcendencej.core.Sha256Hash;
+import org.transcendencej.core.Transaction;
 
 import java.io.Serializable;
 import java.util.Map;
