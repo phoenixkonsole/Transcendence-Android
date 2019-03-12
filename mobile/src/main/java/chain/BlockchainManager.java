@@ -302,7 +302,7 @@ public class BlockchainManager {
                                 LOG.info("trusted peer '" + trustedPeerHost + "'" + (connectTrustedPeerOnly ? " only" : ""));
                                 final InetSocketAddress addr;
                                 if (trustedPeerHost.equals(FURSZY_TESTNET_SERVER) && !conf.isTest()){
-                                    addr = new InetSocketAddress(trustedPeerHost, 6520);
+                                    addr = new InetSocketAddress(trustedPeerHost, 22123);
                                 }else {
                                     addr = new InetSocketAddress(trustedPeerHost, conf.getNetworkParams().getPort());
                                 }

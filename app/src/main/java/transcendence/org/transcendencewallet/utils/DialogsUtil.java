@@ -116,7 +116,7 @@ public class DialogsUtil {
                     final String sslPortStr = editSsl.getText().toString();
                     int tcpPort = TranscendenceContext.NETWORK_PARAMETERS.getPort();
                     if (host.equals(PivtrumGlobalData.FURSZY_TESTNET_SERVER)){
-                        tcpPort = 6520;
+                        tcpPort = 22123;
                     }
                     int sslPort = 0;
                     if (tcpPortStr.length() > 0) {
