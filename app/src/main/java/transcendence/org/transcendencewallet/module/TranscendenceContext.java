@@ -33,13 +33,13 @@ public class TranscendenceContext {
     public static final String URL_FIAT_CURRENCIES_RATE = "https://bitpay.com/rates";
 
     // report mail
-    public static final String REPORT_EMAIL = "support@transcendence.io";
+    public static final String REPORT_EMAIL = "info@teloscoin.org";
     /** Subject line for manually reported issues. */
     public static final String REPORT_SUBJECT_ISSUE = "Reported issue";
 
     /** Donation address */
     //PLADMINAddr
-    public static final String DONATE_ADDRESS = "cQPkk9Lyko4HCZJs2xskJop1C9kSv3L8Ut";
+    public static final String DONATE_ADDRESS = "GU1PJ2EdStdu42U9YxpFpQz4zF92BxqpKy";
 
     public static final class Files{
 
