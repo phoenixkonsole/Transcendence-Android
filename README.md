@@ -11,7 +11,7 @@ app: The Android app itself. This is probably what you're searching for.
 
 pivtrumj: Stratum protocol implementation.
 
-transcendence-core-0.14.3-12.1: transcendencej.
+transcendence-core-0.14.3-12.2: transcendencej.
 
 You can build all sub-projects at once using Gradle:
 

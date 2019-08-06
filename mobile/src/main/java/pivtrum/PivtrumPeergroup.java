@@ -30,6 +30,10 @@ import store.CantInsertAddressException;
 import store.DbException;
 import wallet.WalletManager;
 
+import java.util.List;
+import java.util.Random;
+import global.PivtrumGlobalData;
+
 /**
  * Created by furszy on 6/12/17.
  *
@@ -135,7 +139,10 @@ public class PivtrumPeergroup implements PeerListener, PeerDataListener {
             /*
             * Connect to the trusted node and get servers from it.
             */
-            trustedPeer = new PivtrumPeer(networkConf.getTrustedServer(), ioManager,versionMsg);
+            List<PivtrumPeerData> nodes = PivtrumGlobalData.listTrustedHosts();
+            Random random = new Random();
+
+            trustedPeer = new PivtrumPeer(nodes.get(random.nextInt(nodes.size())), ioManager,versionMsg);
             trustedPeer.addPeerListener(this);
             trustedPeer.addPeerDataListener(this);
             trustedPeer.connect();

@@ -99,7 +99,6 @@
     <string name="title_transcendence_send">송금 금액</string>
     <string name="empty_message_address">저장된 주소가 없습니다</string>
     <string name="error_message">거래내역중에 오류가 있습니다.</string>
-    <string name="settings_change_trusted_node">신뢰할수 있는 노드로 변경</string>
     <string name="settings_reset_blockchain">블록체인 재설정</string>
     <string name="save">저장</string>
     <string name="tutorial_message">피벡스 (Private, Instant, Verified, Transaction) 는 크리에이터, 혁신가, 기술전문가들로 구성된 글로벌 커뮤니티에 의해 운영되는 개인 정보 중심의 분산형 오픈 소스 암호화 화폐입니다.</string>

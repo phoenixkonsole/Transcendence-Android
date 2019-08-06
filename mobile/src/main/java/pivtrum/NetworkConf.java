@@ -16,22 +16,11 @@ public class NetworkConf {
     private static final String CLIENT_NAME = "transcendence_mobile";
     private static final String MAX_PROTOCOL_VERSION = "2.9.5";
     private static final String MIN_PROTOCOL_VERSION = "1.0";
-    /** Trusted server selected on the first screen of the app */
-    private PivtrumPeerData trustedHost;
     /** Known servers from the network */
     private List<InetSocketAddress> networkServers;
 
     public NetworkConf() {
         this.networkServers = new ArrayList<>();
-    }
-
-    public PivtrumPeerData getTrustedServer() {
-        return trustedHost;
-    }
-
-    public void setTrustedServer(PivtrumPeerData pivtrumPeerData) {
-        this.trustedHost = pivtrumPeerData;
-
     }
 
     public void addAll(Collection<InetSocketAddress> networkServers){

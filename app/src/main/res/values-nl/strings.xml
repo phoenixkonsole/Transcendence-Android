@@ -99,7 +99,6 @@
     <string name="title_transcendence_send">Hoeveelheid verzonden</string>
     <string name="empty_message_address">Je hebt nog geen adressen opgeslaan</string>
     <string name="error_message">Er is mogelijk een fout \n met je transactie</string>
-    <string name="settings_change_trusted_node">Wijzig trusted node</string>
     <string name="settings_reset_blockchain">Blockchain resetten</string>
     <string name="save">Opslaan</string>
     <string name="tutorial_message">TELOS, Private, Instant, Verified, Transaction\n is een op privacy-gefocust, gedecentraliseerd, open source cryptovaluta gerund door een wereldwijde gemeenschap die bestaat uit ontwikkelaars, vernieuwers, en technologie enthousiastelingen.</string>

@@ -23,23 +23,12 @@ import static transcendence.org.transcendencewallet.module.TranscendenceContext.
 
 public class WalletConfImp extends Configurations implements WalletConfiguration {
 
-    private static final String PREF_TRUSTED_NODE = "trusted_node";
     private static final String PREFS_KEY_SCHEDULE_BLOCKCHAIN_SERVICE = "sch_block_serv";
     private static final String PREF_CURRENCY_RATE = "currency_code";
 
 
     public WalletConfImp(SharedPreferences prefs) {
         super(prefs);
-    }
-
-    @Override
-    public String getTrustedNodeHost() {
-        return getString(PREF_TRUSTED_NODE,null);
-    }
-
-    @Override
-    public void saveTrustedNode(String host, int port) {
-        save(PREF_TRUSTED_NODE,host);
     }
 
     @Override
@@ -50,11 +39,6 @@ public class WalletConfImp extends Configurations implements WalletConfiguration
     @Override
     public long getScheduledBLockchainService(){
         return getLong(PREFS_KEY_SCHEDULE_BLOCKCHAIN_SERVICE,0);
-    }
-
-    @Override
-    public int getTrustedNodePort() {
-        return TranscendenceContext.NETWORK_PARAMETERS.getPort();
     }
 
     @Override

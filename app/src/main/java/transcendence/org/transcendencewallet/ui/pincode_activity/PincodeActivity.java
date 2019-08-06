@@ -8,11 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.util.List;
-import java.util.Random;
-
-import global.PivtrumGlobalData;
-import pivtrum.PivtrumPeerData;
 import transcendence.org.transcendencewallet.R;
 import transcendence.org.transcendencewallet.ui.backup_mnemonic_activity.MnemonicActivity;
 import transcendence.org.transcendencewallet.ui.base.BaseActivity;
@@ -64,14 +59,6 @@ public class PincodeActivity extends BaseActivity implements KeyboardFragment.on
     }
 
     private void goNext() {
-        if (transcendenceApplication.getAppConf().getTrustedNode()==null){
-            // select random trusted node
-            List<PivtrumPeerData> nodes = PivtrumGlobalData.listTrustedHosts();
-            Random random = new Random();
-            transcendenceApplication.setTrustedServer(nodes.get(random.nextInt(nodes.size())));
-            transcendenceApplication.stopBlockchain();
-        }
-
         transcendenceApplication.getAppConf().setAppInit(true);
 
         Intent myIntent = new Intent(PincodeActivity.this,MnemonicActivity.class);

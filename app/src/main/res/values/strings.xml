@@ -116,7 +116,6 @@
     <string name="title_transcendence_send">Amount send</string>
     <string name="empty_message_address">You don\'t have any saved address yet.</string>
     <string name="error_message">There seems to been an error\nwith your transaction</string>
-    <string name="settings_change_trusted_node">Change trusted node</string>
     <string name="settings_reset_blockchain">Reset blockchain</string>
     <string name="save">Save</string>
     <string name="tutorial_message">Privacy-focused, decentralized, cryptocurrency with ecosystem for digital services.</string>

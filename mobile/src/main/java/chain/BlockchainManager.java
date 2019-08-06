@@ -182,9 +182,7 @@ public class BlockchainManager {
         if (peerGroup != null) {
             LOG.info("broadcasting transaction " + tx.getHashAsString());
             boolean onlyTrustedNode =
-                    (conf.getNetworkParams() instanceof RegTestParams || conf.getNetworkParams() instanceof TestNet3Params)
-                            ||
-                            conf.getTrustedNodeHost()!=null;
+                    (conf.getNetworkParams() instanceof RegTestParams || conf.getNetworkParams() instanceof TestNet3Params);
             TransactionBroadcast transactionBroadcast = peerGroup.broadcastTransaction(
                     tx,
                     onlyTrustedNode?1:2,
@@ -264,11 +262,7 @@ public class BlockchainManager {
                 // Memory check
                 final int maxConnectedPeers = context.isMemoryLow() ? 4 : 6 ;
 
-                final String trustedPeerHost = conf.getTrustedNodeHost();
-                final boolean hasTrustedPeer = trustedPeerHost != null;
-
-                final boolean connectTrustedPeerOnly = trustedPeerHost != null;//hasTrustedPeer && config.getTrustedPeerOnly();
-                peerGroup.setMaxConnections(connectTrustedPeerOnly ? 1 : maxConnectedPeers);
+                peerGroup.setMaxConnections(maxConnectedPeers);
                 peerGroup.setConnectTimeoutMillis(conf.getPeerTimeoutMs());
                 peerGroup.setPeerDiscoveryTimeoutMillis(conf.getPeerDiscoveryTimeoutMs());
                 peerGroup.setMinBroadcastConnections(1);
@@ -296,39 +290,13 @@ public class BlockchainManager {
                                 throws PeerDiscoveryException {
                             final List<InetSocketAddress> peers = new LinkedList<>();
 
-                            boolean needsTrimPeersWorkaround = false;
+                            //Add seeds from transcendence-core
+                            peers.addAll(Arrays.asList(normalPeerDiscovery.getPeers(services, timeoutValue, timeoutUnit)));
 
-                            if (hasTrustedPeer) {
-                                LOG.info("trusted peer '" + trustedPeerHost + "'" + (connectTrustedPeerOnly ? " only" : ""));
-                                final InetSocketAddress addr;
-                                if (trustedPeerHost.equals(FURSZY_TESTNET_SERVER) && !conf.isTest()){
-                                    addr = new InetSocketAddress(trustedPeerHost, 22123);
-                                }else {
-                                    addr = new InetSocketAddress(trustedPeerHost, conf.getNetworkParams().getPort());
-                                }
 
-                                if (addr.getAddress() != null) {
-                                    peers.add(addr);
-                                    needsTrimPeersWorkaround = true;
-                                }
-                                /*if (conf.isTest()){
-                                    // add one more peer to validate tx
-                                    peers.add(new InetSocketAddress(FURSZY_TESTNET_SERVER,6444));
-                                    needsTrimPeersWorkaround = false;
-                                }*/
-                            }else {
-                                for (PivtrumPeerData pivtrumPeerData : PivtrumGlobalData.listTrustedHosts()) {
-                                    peers.add(new InetSocketAddress(pivtrumPeerData.getHost(), pivtrumPeerData.getTcpPort()));
-                                }
+                            for (PivtrumPeerData pivtrumPeerData : PivtrumGlobalData.listTrustedHosts()) {
+                                peers.add(new InetSocketAddress(pivtrumPeerData.getHost(), pivtrumPeerData.getTcpPort()));
                             }
-
-                            if (!connectTrustedPeerOnly)
-                                peers.addAll(Arrays.asList(normalPeerDiscovery.getPeers(services, timeoutValue, timeoutUnit)));
-
-                            // workaround because PeerGroup will shuffle peers
-                            if (needsTrimPeersWorkaround)
-                                while (peers.size() >= maxConnectedPeers)
-                                    peers.remove(peers.size() - 1);
 
                             return peers.toArray(new InetSocketAddress[0]);
                         }

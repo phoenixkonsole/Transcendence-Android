@@ -99,7 +99,6 @@
     <string name="title_transcendence_send">Cantidad enviada</string>
     <string name="empty_message_address">Todavía no tiene direcciones guardadas.</string>
     <string name="error_message">Parece que ha habido un error\n con su transacción</string>
-    <string name="settings_change_trusted_node">Cambiar nodo de confianza</string>
     <string name="settings_reset_blockchain">Resetear cadena de bloques</string>
     <string name="save">Guardar</string>
     <string name="tutorial_message">Privada, Instantánea y Verificada\n es dinero digital descentralizado y de código abierto, focalizado en su privacidad. Está desarrollado por una comunidad global de creadores, emprendedores y entusiastas de la tecnología.</string>
