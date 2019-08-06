@@ -18,9 +18,9 @@ public class PivtrumGlobalData {
 
     public static final List<PivtrumPeerData> listTrustedHosts(){
         List<PivtrumPeerData> list = new ArrayList<>();
-        list.add(new PivtrumPeerData(FURSZY_TESTNET_SERVER,22123,55552));
+        list.add(new PivtrumPeerData(FURSZY_TESTNET_SERVER,8051,55552));
         for (String trustedNode : TRUSTED_NODES) {
-            list.add(new PivtrumPeerData(trustedNode,22123,55552));
+            list.add(new PivtrumPeerData(trustedNode,8051,55552));
         }
         return list;
     }

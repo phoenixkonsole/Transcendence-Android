@@ -99,7 +99,6 @@
     <string name="title_transcendence_send">Lähetysmäärä</string>
     <string name="empty_message_address">Sinulla ei ole vielä yhtään tallennettua osoitetta.</string>
     <string name="error_message">Näyttää siltä että rahansiirrossasi on virhe</string>
-    <string name="settings_change_trusted_node">Vaihda luotettu solmu</string>
     <string name="settings_reset_blockchain">Nollaa lohkoketju</string>
     <string name="save">Tallenna</string>
     <string name="tutorial_message">Yksityinen Välitön Vahvistettu Rahansiirto, on yksityisyyteen keskittyvä, desentralisoitu, avoimen lähdekoodin kryptovaluutta, jota pyörittää maailmanlaajuinen yhteisö luojia, innovaattoreita ja teknologia intoilijoita.</string>

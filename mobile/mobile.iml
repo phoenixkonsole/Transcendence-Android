@@ -41,7 +41,7 @@
     <orderEntry type="library" exported="" scope="PROVIDED" name="commons-digester-1.8.1" level="project" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="commons-logging-1.2" level="project" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="commons-collections-3.2.2" level="project" />
-    <orderEntry type="library" exported="" scope="PROVIDED" name="transcendencej-core-0.14.3-12.1" level="project" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="transcendencej-core-0.14.3-12.2" level="project" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="furszy-non-blocking-client-0.0.1" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="slf4j-api-1.7.20" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="protobuf-java-2.6.1" level="project" />
@@ -57,7 +57,7 @@
     <orderEntry type="library" exported="" scope="RUNTIME" name="commons-digester-1.8.1" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="commons-logging-1.2" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="commons-collections-3.2.2" level="project" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="transcendencej-core-0.14.3-12.1" level="project" />
+    <orderEntry type="library" exported="" scope="RUNTIME" name="transcendencej-core-0.14.3-12.2" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="furszy-non-blocking-client-0.0.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="slf4j-simple-1.7.5" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="slf4j-api-1.7.20" level="project" />
@@ -76,7 +76,7 @@
     <orderEntry type="library" exported="" scope="TEST" name="commons-logging-1.2" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="commons-collections-3.2.2" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="hamcrest-core-1.3" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="transcendencej-core-0.14.3-12.1" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="transcendencej-core-0.14.3-12.2" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="furszy-non-blocking-client-0.0.1" level="project" />
   </component>
 </module>

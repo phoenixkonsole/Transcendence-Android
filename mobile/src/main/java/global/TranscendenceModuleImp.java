@@ -53,7 +53,6 @@ import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.util.encoders.Base64;
 import org.spongycastle.util.encoders.Hex;
 
-import pivtrum.PivtrumPeergroup;
 import wallet.exceptions.InsufficientInputsException;
 import wallet.exceptions.TxNotFoundException;
 import wallet.WalletManager;
@@ -93,12 +92,6 @@ public class TranscendenceModuleImp implements TranscendenceModule {
     public void start() throws IOException{
         walletManager.init();
     }
-
-    // todo: clean this.
-//    public void setPivtrumPeergroup(PivtrumPeergroup peergroup){
-//        //peergroup.setAddressStore(addressstiew);
-//        peergroup.setWalletManager(walletManager);
-//    }
 
     @Override
     public void createWallet() {

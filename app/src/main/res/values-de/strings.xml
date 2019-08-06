@@ -99,7 +99,6 @@
     <string name="title_transcendence_send">Betrag senden</string>
     <string name="empty_message_address">Du hast bisher keine gespeicherten Adressen.</string>
     <string name="error_message">Es scheint einen Fehler mit\n deiner Transaktion zu geben.</string>
-    <string name="settings_change_trusted_node">Wechseln des vertrauenswürdigen Knoten</string>
     <string name="settings_reset_blockchain">Blockchain zurücksetzen</string>
     <string name="save">Speichern</string>
     <string name="tutorial_message">Vertraulich-Sofort- Verifizierte-Transaktion\nist eine dezentralisierte Open-Source-Kryptowährung - gestützt durch eine globale Community von Vordenkern, organisiert durch Technologieenthusiasten und getrieben durch Erfinder. </string>

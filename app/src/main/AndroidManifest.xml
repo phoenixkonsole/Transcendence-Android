@@ -79,10 +79,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ui.start_node_activity.StartNodeActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name=".ui.restore_activity.RestoreActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />

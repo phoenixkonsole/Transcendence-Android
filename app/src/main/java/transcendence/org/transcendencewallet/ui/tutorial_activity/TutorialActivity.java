@@ -21,14 +21,13 @@ import android.widget.TextView;
 
 import transcendence.org.transcendencewallet.R;
 import transcendence.org.transcendencewallet.ui.pincode_activity.PincodeActivity;
-import transcendence.org.transcendencewallet.ui.start_node_activity.StartNodeActivity;
 import transcendence.org.transcendencewallet.ui.wallet_activity.WalletActivity;
 
 /**
  * Created by Neoperol on 7/6/17.
  */
 
-public class TutorialActivity extends AppCompatActivity implements View.OnClickListener {
+public class TutorialActivity extends AppCompatActivity {
 
     private static final int OPTION_ADD_NODE = 300;
     public static final String INTENT_EXTRA_INFO_TUTORIAL = "info_tutorial";
@@ -38,7 +37,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
     private LinearLayout dotsLayout;
     private TextView[] dots;
     private int[] layouts;
-    private Button btnSkip, btnNext, btn_node;
+    private Button btnSkip, btnNext;
     private boolean isInit = true;
 
     @Override
@@ -52,9 +51,6 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);
-        btn_node = (Button) findViewById(R.id.btn_node);
-
-        btn_node.setOnClickListener(this);
 
         layouts = new int[]{
                 R.layout.tutorial_slide1,
@@ -107,12 +103,10 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
                 // last page. make button text to GOT IT
                 btnNext.setText(getString(R.string.start));
                 btnSkip.setVisibility(View.GONE);
-                btn_node.setVisibility(View.VISIBLE);
             } else {
                 // still pages are left
                 btnNext.setText(getString(R.string.next));
                 btnSkip.setVisibility(View.VISIBLE);
-                btn_node.setVisibility(View.INVISIBLE);
             }
         }
 
@@ -169,14 +163,6 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
         }
         startActivity(new Intent(this, activity));
         finish();
-    }
-
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        if (id == R.id.btn_node){
-            startActivity(new Intent(this,StartNodeActivity.class));
-        }
     }
 
     public class ViewPagerAdapter extends PagerAdapter {

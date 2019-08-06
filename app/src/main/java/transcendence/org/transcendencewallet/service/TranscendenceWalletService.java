@@ -86,7 +86,6 @@ public class TranscendenceWalletService extends Service{
 
     private TranscendenceApplication transcendenceApplication;
     private TranscendenceModuleImp module;
-    //private PivtrumPeergroup pivtrumPeergroup;
     private BlockchainManager blockchainManager;
 
     private PeerConnectivityListener peerConnectivityListener;
@@ -335,10 +334,6 @@ public class TranscendenceWalletService extends Service{
             transcendenceApplication = TranscendenceApplication.getInstance();
             module = (TranscendenceModuleImp) transcendenceApplication.getModule();
             blockchainManager = module.getBlockchainManager();
-            // connect to pivtrum node
-            /*pivtrumPeergroup = new PivtrumPeergroup(transcendenceApplication.getNetworkConf());
-            pivtrumPeergroup.addAddressListener(addressListener);
-            module.setPivtrumPeergroup(pivtrumPeergroup);*/
 
             // Schedule service
             tryScheduleService();
@@ -364,11 +359,6 @@ public class TranscendenceWalletService extends Service{
             intentFilter.addAction(Intent.ACTION_DEVICE_STORAGE_LOW);
             intentFilter.addAction(Intent.ACTION_DEVICE_STORAGE_OK);
             registerReceiver(connectivityReceiver, intentFilter); // implicitly init PeerGroup
-
-            // initilizing trusted node.
-            //pivtrumPeergroup.start();
-
-
         } catch (Error e){
             e.printStackTrace();
             CrashReporter.appendSavedBackgroundTraces(e);
@@ -441,10 +431,6 @@ public class TranscendenceWalletService extends Service{
                 }
             }*/
             blockchainManager.destroy(resetBlockchainOnShutdown);
-
-            /*if (pivtrumPeergroup.isRunning()) {
-                pivtrumPeergroup.shutdown();
-            }*/
 
             if (wakeLock.isHeld()) {
                 log.debug("wakelock still held, releasing");

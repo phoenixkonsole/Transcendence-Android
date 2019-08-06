@@ -252,19 +252,6 @@ public class TranscendenceApplication extends Application implements ContextWrap
         return networkConf;
     }
 
-    /**
-     *
-     * @param trustedServer
-     */
-    public void setTrustedServer(PivtrumPeerData trustedServer) {
-        networkConf.setTrustedServer(trustedServer);
-        if (trustedServer.getHost() !=null)
-        transcendenceModule.getConf().saveTrustedNode(trustedServer.getHost(),22123);
-        else
-            transcendenceModule.getConf().saveTrustedNode("116.203.24.38",22123);
-        appConf.saveTrustedNode(trustedServer);
-    }
-
     public CentralFormats getCentralFormats() {
         return centralFormats;
     }

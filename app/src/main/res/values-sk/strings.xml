@@ -99,7 +99,6 @@
     <string name="title_transcendence_send">Částka k odeslání</string>
     <string name="empty_message_address">Dosud nemáte uloženou žádnou adresu.</string>
     <string name="error_message">Objevila se chyba \npři zpracování Vaší transakce</string>
-    <string name="settings_change_trusted_node">Změnit důvěryhodný uzel</string>
     <string name="settings_reset_blockchain">Resetovat blockchain</string>
     <string name="save">Uložit</string>
     <string name="tutorial_message">Privátní, Instantí, Ověřená, Transakce\nje decentralizovaná, privátně zaměřená open source měna užívaná globální komunitou stávající se z jejích tvůrců, inovátorů, a technologických nadšenců.</string>
