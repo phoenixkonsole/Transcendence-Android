@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v4.content.FileProvider;
 
 import org.acra.ACRA;
@@ -156,8 +157,13 @@ public class TranscendenceApplication extends Application implements ContextWrap
     }
 
     public void startTranscendenceService() {
-        Intent intent = new Intent(this,TranscendenceWalletService.class);
-        startService(intent);
+        Intent intent = new Intent(this, TranscendenceWalletService.class);
+        if (Build.VERSION.SDK_INT >= 26) {
+            startForegroundService(intent);
+        } else {
+            // Pre-O behavior.
+            startService(intent);
+        }
     }
 
     private void initLogging() {
