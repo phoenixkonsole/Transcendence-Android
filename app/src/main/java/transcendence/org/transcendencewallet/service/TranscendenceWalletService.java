@@ -369,6 +369,11 @@ public class TranscendenceWalletService extends Service{
         serviceForeground = false;
     }
 
+    private void prepareServiceForForegroundOreo() {
+        startServiceForeground();
+        stopServiceForeground();
+    }
+
     @Override
     public void onCreate() {
         serviceCreatedAt = System.currentTimeMillis();
@@ -380,9 +385,9 @@ public class TranscendenceWalletService extends Service{
             final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
             wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, lockName);
             createNotificationChannel();
-            startServiceForeground();
-            stopServiceForeground();
-
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                prepareServiceForForegroundOreo();
+            }
             broadcastManager = LocalBroadcastManager.getInstance(this);
             // Transcendence
             transcendenceApplication = TranscendenceApplication.getInstance();

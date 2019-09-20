@@ -158,7 +158,7 @@ public class TranscendenceApplication extends Application implements ContextWrap
 
     public void startTranscendenceService() {
         Intent intent = new Intent(this, TranscendenceWalletService.class);
-        if (Build.VERSION.SDK_INT >= 26) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             startForegroundService(intent);
         } else {
             // Pre-O behavior.
