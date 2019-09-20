@@ -2,12 +2,15 @@ package transcendence.org.transcendencewallet;
 
 import android.app.ActivityManager;
 import android.app.Application;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.IBinder;
 import android.support.v4.content.FileProvider;
 
 import org.acra.ACRA;
@@ -159,7 +162,17 @@ public class TranscendenceApplication extends Application implements ContextWrap
     public void startTranscendenceService() {
         Intent intent = new Intent(this, TranscendenceWalletService.class);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startForegroundService(intent);
+            ServiceConnection connection = new ServiceConnection() {
+                @Override
+                public void onServiceConnected(ComponentName className,
+                                               IBinder service) {
+                }
+                @Override
+                public void onServiceDisconnected(ComponentName arg0) {
+                }
+            };
+
+            bindService(intent, connection, Context.BIND_AUTO_CREATE);
         } else {
             // Pre-O behavior.
             startService(intent);
