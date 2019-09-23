@@ -1,6 +1,7 @@
 package transcendence.org.transcendencewallet.service;
 
 import android.app.AlarmManager;
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -82,6 +83,9 @@ import static transcendence.org.transcendencewallet.service.IntentsConstants.NOT
 
 public class TranscendenceWalletService extends Service{
 
+    public static final String CHANNEL_ID = "TranscendenceWalletServiceChannel";
+    public static final int FOREGROUND_ID = 8476;
+
     private Logger log = LoggerFactory.getLogger(TranscendenceWalletService.class);
 
     private TranscendenceApplication transcendenceApplication;
@@ -109,6 +113,8 @@ public class TranscendenceWalletService extends Service{
 
     private volatile long lastUpdateTime = System.currentTimeMillis();
     private volatile long lastMessageTime = System.currentTimeMillis();
+
+    private boolean serviceForeground = false;
 
     public class TranscendenceBinder extends Binder {
         public TranscendenceWalletService getService() {
@@ -162,14 +168,16 @@ public class TranscendenceWalletService extends Service{
 
                 //delayHandler.removeCallbacksAndMessages(null);
 
+                if (blocksLeft < 6) {
+                    blockchainState = BlockchainState.SYNC;
+                    stopServiceForeground();
+                } else {
+                    blockchainState = BlockchainState.SYNCING;
+                    startServiceForeground();
+                }
 
                 final long now = System.currentTimeMillis();
                 if (now - lastMessageTime > TimeUnit.SECONDS.toMillis(6)) {
-                    if (blocksLeft < 6) {
-                        blockchainState = BlockchainState.SYNC;
-                    } else {
-                        blockchainState = BlockchainState.SYNCING;
-                    }
                     transcendenceApplication.getAppConf().setLastBestChainBlockTime(block.getTime().getTime());
                     broadcastBlockchainState(true);
                 }
@@ -270,7 +278,7 @@ public class TranscendenceWalletService extends Service{
                         mChannel.enableLights(true);
 
                     }
-                        mBuilder = new NotificationCompat.Builder(getApplicationContext())
+                        mBuilder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                             .setContentTitle("TELOS received!")
                             .setContentText("Coins received for a value of " + notificationAccumulatedAmount.toFriendlyString())
                             .setAutoCancel(true)
@@ -291,7 +299,6 @@ public class TranscendenceWalletService extends Service{
             }catch (Exception e){
                 e.printStackTrace();
             }
-
         }
     };
 
@@ -318,6 +325,50 @@ public class TranscendenceWalletService extends Service{
         }
     };
 
+    private void createNotificationChannel() {
+        nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel serviceChannel = new NotificationChannel(
+                    CHANNEL_ID,
+                    "Transcendence wallet service channel",
+                    NotificationManager.IMPORTANCE_DEFAULT
+            );
+            nm.createNotificationChannel(serviceChannel);
+        }
+    }
+
+    private Notification buildForegroundNotification() {
+        NotificationCompat.Builder b = new NotificationCompat.Builder(this, CHANNEL_ID);
+
+        Intent notificationIntent = new Intent(this, WalletActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,
+                0, notificationIntent, 0);
+
+        b.setOngoing(true)
+                .setContentTitle("Syncing Transcendence wallet...")
+                .setContentText(getString(R.string.sync_in_progress))
+                .setSmallIcon(android.R.drawable.stat_sys_download)
+                .setTicker("Syncing...")
+                .setContentIntent(pendingIntent)
+                .setVibrate(new long[]{0l});
+
+        return(b.build());
+    }
+    private Notification foregroundNotification;
+
+    private void startServiceForeground() {
+        if (!serviceForeground) {
+            foregroundNotification = buildForegroundNotification();
+            startForeground(FOREGROUND_ID, foregroundNotification);
+            serviceForeground = true;
+        }
+    }
+
+    private void stopServiceForeground() {
+        stopForeground(true);
+        serviceForeground = false;
+    }
+
     @Override
     public void onCreate() {
         serviceCreatedAt = System.currentTimeMillis();
@@ -328,7 +379,7 @@ public class TranscendenceWalletService extends Service{
             final String lockName = getPackageName() + " blockchain sync";
             final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
             wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, lockName);
-            nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            createNotificationChannel();
             broadcastManager = LocalBroadcastManager.getInstance(this);
             // Transcendence
             transcendenceApplication = TranscendenceApplication.getInstance();
@@ -562,7 +613,7 @@ public class TranscendenceWalletService extends Service{
 
             if(showNotif) {
                 android.support.v4.app.NotificationCompat.Builder mBuilder =
-                        new NotificationCompat.Builder(getApplicationContext())
+                        new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                                 .setSmallIcon(R.mipmap.ic_launcher)
                                 .setContentTitle("Alert")
                                 .setContentText(stringBuilder.toString())
