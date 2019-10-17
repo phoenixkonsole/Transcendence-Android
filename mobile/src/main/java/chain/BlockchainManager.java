@@ -81,7 +81,7 @@ public class BlockchainManager {
         this.blockchainManagerListeners = new ArrayList<>();
     }
 
-    public void init(BlockStore blockStoreInit,File blockStoreDir,String blockStoreFilename,boolean blockStoreFileExists){
+    public void init(BlockStore blockStoreInit,File blockStoreDir,String blockStoreFilename,boolean blockStoreFileEmpty){
         synchronized (this) {
 
             // todo: en vez de que el service este maneje el blockchain deberia crear una clase que lo haga..
@@ -90,9 +90,8 @@ public class BlockchainManager {
             else {
                 blockChainFile = blockStoreDir;
             }
-            final boolean blockChainFileExists = blockChainFile.exists();
 
-            if (!blockChainFileExists) {
+            if (blockStoreFileEmpty) {
                 LOG.info("blockchain does not exist, resetting wallet");
                 walletManager.reset();
             }
@@ -104,7 +103,7 @@ public class BlockchainManager {
 
                 final long earliestKeyCreationTime = walletManager.getEarliestKeyCreationTime();
 
-                if (!blockChainFileExists && earliestKeyCreationTime > 0 && !(conf.getNetworkParams() instanceof RegTestParams)) {
+                if (blockStoreFileEmpty && earliestKeyCreationTime > 0 && !(conf.getNetworkParams() instanceof RegTestParams)) {
                     try {
                         String filename = conf.getCheckpointFilename();
                         String suffix = conf.getNetworkParams() instanceof MainNetParams ? "":"-testnet";

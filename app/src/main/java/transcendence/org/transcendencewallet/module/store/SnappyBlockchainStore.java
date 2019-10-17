@@ -35,6 +35,7 @@ public class SnappyBlockchainStore implements BlockStore{
     private final ByteBuffer zerocoinBuffer = ByteBuffer.allocate(StoredBlock.COMPACT_SERIALIZED_SIZE_ZEROCOIN);
     private final File path;
     private final String filename;
+    private boolean emptyDb = false;
 
 
     /** Creates a LevelDB SPV block store using the given factory, which is useful if you want a pure Java version. */
@@ -74,12 +75,14 @@ public class SnappyBlockchainStore implements BlockStore{
             StoredBlock storedGenesis = new StoredBlock(genesis, genesis.getWork(), 0);
             put(storedGenesis);
             setChainHead(storedGenesis);
+            emptyDb = true;
         }
     }
 
     @Override
     public synchronized void put(StoredBlock block) throws BlockStoreException {
         try {
+            emptyDb = false;
             //System.out.println("### trying to save something..");
             ByteBuffer buffer;
             buffer = block.getHeader().isZerocoin() ? zerocoinBuffer : this.buffer;
@@ -133,6 +136,7 @@ public class SnappyBlockchainStore implements BlockStore{
     @Override
     public synchronized void setChainHead(StoredBlock chainHead) throws BlockStoreException {
         try {
+            emptyDb = false;
             db.put(CHAIN_HEAD_KEY_STRING, chainHead.getHeader().getHash().getBytes());
         } catch (SnappydbException e) {
             e.printStackTrace();
@@ -155,6 +159,13 @@ public class SnappyBlockchainStore implements BlockStore{
 
     public String getFilename() {
         return filename;
+    }
+
+    /**
+     * @return the emptyDb
+     */
+    public boolean isEmptyDb() {
+        return emptyDb;
     }
 
     /** Erases the contents of the database (but NOT the underlying files themselves) and then reinitialises with the genesis block.
