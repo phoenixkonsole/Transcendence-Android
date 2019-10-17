@@ -15,6 +15,7 @@ import org.transcendencej.core.TransactionBroadcast;
 import org.transcendencej.core.listeners.PeerConnectedEventListener;
 import org.transcendencej.core.listeners.PeerDataEventListener;
 import org.transcendencej.core.listeners.PeerDisconnectedEventListener;
+import org.transcendencej.net.discovery.DnsDiscovery;
 import org.transcendencej.net.discovery.MultiplexingDiscovery;
 import org.transcendencej.net.discovery.PeerDiscovery;
 import org.transcendencej.net.discovery.PeerDiscoveryException;
@@ -280,6 +281,7 @@ public class BlockchainManager {
                         }
                     });
                 } else {
+                    peerGroup.addPeerDiscovery(new DnsDiscovery(conf.getNetworkParams()));
                     peerGroup.addPeerDiscovery(new PeerDiscovery() {
 
                         private final PeerDiscovery normalPeerDiscovery = MultiplexingDiscovery.forServices(conf.getNetworkParams(), 0);
