@@ -24,6 +24,7 @@ dependencies {
     compile group: 'com.google.guava', name: 'guava', version: '20.0'
     compile group: 'com.squareup.okhttp', name: 'okhttp', version: '2.7.5'
     compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
+    compile group: 'dnsjava', name: 'dnsjava', version: '2.1.9'
     compile 'com.madgag.spongycastle:core:1.54.0.0'
 
     compile files('lib/furszy-non-blocking-client-0.0.1.jar')

@@ -393,13 +393,12 @@ public class TranscendenceWalletService extends Service{
 
             File file = getDir("blockstore_v2",MODE_PRIVATE);
             String filename = TranscendenceContext.Files.BLOCKCHAIN_FILENAME;
-            boolean fileExists = new File(file,filename).exists();
             blockchainStore = new SnappyBlockchainStore(TranscendenceContext.CONTEXT,file,filename);
             blockchainManager.init(
                     blockchainStore,
                     file,
                     filename,
-                    fileExists
+                    blockchainStore.isEmptyDb()
             );
 
             module.addCoinsReceivedEventListener(coinReceiverListener);

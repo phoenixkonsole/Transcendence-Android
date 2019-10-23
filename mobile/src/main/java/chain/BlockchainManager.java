@@ -15,6 +15,7 @@ import org.transcendencej.core.TransactionBroadcast;
 import org.transcendencej.core.listeners.PeerConnectedEventListener;
 import org.transcendencej.core.listeners.PeerDataEventListener;
 import org.transcendencej.core.listeners.PeerDisconnectedEventListener;
+import org.transcendencej.net.discovery.DnsDiscovery;
 import org.transcendencej.net.discovery.MultiplexingDiscovery;
 import org.transcendencej.net.discovery.PeerDiscovery;
 import org.transcendencej.net.discovery.PeerDiscoveryException;
@@ -81,7 +82,7 @@ public class BlockchainManager {
         this.blockchainManagerListeners = new ArrayList<>();
     }
 
-    public void init(BlockStore blockStoreInit,File blockStoreDir,String blockStoreFilename,boolean blockStoreFileExists){
+    public void init(BlockStore blockStoreInit,File blockStoreDir,String blockStoreFilename,boolean blockStoreFileEmpty){
         synchronized (this) {
 
             // todo: en vez de que el service este maneje el blockchain deberia crear una clase que lo haga..
@@ -90,9 +91,8 @@ public class BlockchainManager {
             else {
                 blockChainFile = blockStoreDir;
             }
-            final boolean blockChainFileExists = blockChainFile.exists();
 
-            if (!blockChainFileExists) {
+            if (blockStoreFileEmpty) {
                 LOG.info("blockchain does not exist, resetting wallet");
                 walletManager.reset();
             }
@@ -104,7 +104,7 @@ public class BlockchainManager {
 
                 final long earliestKeyCreationTime = walletManager.getEarliestKeyCreationTime();
 
-                if (!blockChainFileExists && earliestKeyCreationTime > 0 && !(conf.getNetworkParams() instanceof RegTestParams)) {
+                if (blockStoreFileEmpty && earliestKeyCreationTime > 0 && !(conf.getNetworkParams() instanceof RegTestParams)) {
                     try {
                         String filename = conf.getCheckpointFilename();
                         String suffix = conf.getNetworkParams() instanceof MainNetParams ? "":"-testnet";
@@ -281,6 +281,7 @@ public class BlockchainManager {
                         }
                     });
                 } else {
+                    peerGroup.addPeerDiscovery(new DnsDiscovery(conf.getNetworkParams()));
                     peerGroup.addPeerDiscovery(new PeerDiscovery() {
 
                         private final PeerDiscovery normalPeerDiscovery = MultiplexingDiscovery.forServices(conf.getNetworkParams(), 0);
